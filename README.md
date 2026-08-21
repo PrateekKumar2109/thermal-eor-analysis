@@ -1,6 +1,6 @@
-# HPRTC Run-5 Dashboard
+# EOR Dashboard
 
-Interactive Streamlit dashboard that replaces the HPRTC Run-5 Excel analysis
+Interactive Streamlit dashboard that replaces the Thermal EOR Excel analysis
 workbook with a browsable, filterable, zoomable web app: oil composition,
 temperature/front-velocity profiles, flue gas (GC) composition, Arrhenius
 kinetics fitting, packing/saturations, mass balance, and a summary report.
