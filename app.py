@@ -27,7 +27,7 @@ from utils.temperature import (
 # Page config
 # ------------------------------------------------------------------
 st.set_page_config(
-    page_title="HPRTC Run-5 Dashboard",
+    page_title="HPRTC  Dashboard",
     page_icon="🔥",
     layout="wide",
     initial_sidebar_state="expanded",
