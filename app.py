@@ -1,5 +1,5 @@
 # app.py
-"""  interactive analysis dashboard."""
+"""HPRTC Run-5 interactive analysis dashboard."""
 
 from pathlib import Path
 
@@ -8,7 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from utils.data_loader import load__data
+from utils.data_loader import load_hprtc_data
 from utils.arrhenius import (
     fit_arrhenius,
     get_available_components,
@@ -27,13 +27,13 @@ from utils.temperature import (
 # Page config
 # ------------------------------------------------------------------
 st.set_page_config(
-    page_title="  Dashboard",
+    page_title="HPRTC Run Dashboard",
     page_icon="🔥",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-DATA_PATH = Path(__file__).parent / "data" / "_Run-5.xlsx"
+DATA_PATH = Path(__file__).parent / "data" / "HPRTC_Run-5.xlsx"
 
 
 # ------------------------------------------------------------------
@@ -41,14 +41,14 @@ DATA_PATH = Path(__file__).parent / "data" / "_Run-5.xlsx"
 # ------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading Excel data...")
 def get_data(path: str):
-    return load__data(path)
+    return load_hprtc_data(path)
 
 
 if not DATA_PATH.exists():
-    st.title("  Dashboard")
+    st.title("HPRTC  Dashboard")
     st.error(
         f"No workbook found at `{DATA_PATH.relative_to(Path(__file__).parent)}`.\n\n"
-        "Copy your _Run.xlsx file into the `data/` folder (or run "
+        "Copy your HPRTC_Run-5.xlsx file into the `data/` folder (or run "
         "`python generate_sample_data.py` to try the app with sample data), then reload."
     )
     st.stop()
@@ -58,7 +58,7 @@ data = get_data(str(DATA_PATH))
 # ------------------------------------------------------------------
 # Sidebar
 # ------------------------------------------------------------------
-st.sidebar.title("🔥  ")
+st.sidebar.title("🔥 HPRTC Run")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
@@ -103,7 +103,7 @@ def _safe_metric(col, label, value, fmt=None, suffix=""):
 # PAGE: Overview
 # ==================================================================
 if page == "Overview":
-    st.title("  — Overview")
+    st.title("HPRTC  — Overview")
     st.markdown("High Pressure Ramped Temperature Cracking / Oxidation Test")
 
     col1, col2, col3, col4 = st.columns(4)
@@ -427,3 +427,4 @@ elif page == "Report":
           content above is finalized.
         """
     )
+
